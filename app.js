@@ -18,6 +18,10 @@ let favorites = [];
 ];
 
 const recipeContainer = document.querySelector('#recipe-container');
+const renderSteps = (steps, index) => {
+    if (index === steps.length) return "";
+    return `<li>${steps[index]}</li>` + renderSteps(steps, index + 1);
+};
 
 const createRecipeCard = (recipe) => {
     return `
@@ -31,21 +35,32 @@ const createRecipeCard = (recipe) => {
                 </span>
             </div>
 
-            <p>${recipe.description}</p>
-
-            <button onclick="toggleFavorite(${recipe.id})">❤️ Favorite</button>
-
+            <button onclick="toggleRecipe(${recipe.id})">
+                View Recipe
+            </button>
 
             <div class="recipe-details" id="details-${recipe.id}" style="display:none;">
                 <h4>Ingredients</h4>
-                ${renderList(recipe.ingredients)}
+                <ul>
+                    ${recipe.ingredients.map(item => `<li>${item}</li>`).join('')}
+                </ul>
 
                 <h4>Steps</h4>
-                ${renderList(recipe.steps)}
+                <ol>
+                    ${renderSteps(recipe.steps, 0)}
+                </ol>
             </div>
         </div>
     `;
 };
+const toggleRecipe = (id) => {
+    (() => {
+        const details = document.getElementById(`details-${id}`);
+        details.style.display =
+            details.style.display === "none" ? "block" : "none";
+    })();
+};
+
 const renderList = (items, index = 0) => {
     if (index === 0) {
         return `<ul>${renderList(items, index + 1)}</ul>`;
@@ -179,3 +194,15 @@ const sortByName = () => {
     );
     renderRecipes(sortedByName);
 };
+ingredients: [
+    "Pasta",
+    "Eggs",
+    "Cheese",
+    "Pepper"
+],
+steps: [
+    "Boil the pasta",
+    "Cook the sauce",
+    "Mix everything",
+    "Serve hot"
+]

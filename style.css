@@ -127,3 +127,11 @@ main {
 .controls button:hover {
     background-color: #764ba2;
 }
+.recipe-details {
+    margin-top: 1rem;
+}
+
+.recipe-details h4 {
+    margin-top: 0.75rem;
+    color: #333;
+}
