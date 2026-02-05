@@ -107,3 +107,23 @@ main {
     background-color: #764ba2;
     color: white;
 }
+.controls {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    background-color: #667eea;
+    color: white;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: #764ba2;
+}

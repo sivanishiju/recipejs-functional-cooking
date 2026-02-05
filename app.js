@@ -156,3 +156,26 @@ searchInput.addEventListener("input", () => {
 
     renderRecipes(searchedRecipes);
 });
+const filterByDifficulty = (level) => {
+    const filteredRecipes = recipes.filter(
+        recipe => recipe.difficulty === level
+    );
+    renderRecipes(filteredRecipes);
+};
+
+const showAll = () => {
+    renderRecipes(recipes);
+};
+const sortByTime = () => {
+    const sortedByTime = [...recipes].sort(
+        (a, b) => a.time - b.time
+    );
+    renderRecipes(sortedByTime);
+};
+
+const sortByName = () => {
+    const sortedByName = [...recipes].sort(
+        (a, b) => a.title.localeCompare(b.title)
+    );
+    renderRecipes(sortedByName);
+};
