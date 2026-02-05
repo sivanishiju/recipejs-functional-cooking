@@ -21,6 +21,15 @@
 </section>
 
     <main>
+        <section class="controls">
+    <input type="text" id="searchInput" placeholder="Search recipes..." />
+
+    <button onclick="showAll()">Show All</button>
+    <button onclick="filterDifficulty('easy')">Easy</button>
+    <button onclick="filterDifficulty('medium')">Medium</button>
+    <button onclick="filterDifficulty('hard')">Hard</button>
+</section>
+
         <div id="recipe-container">
             <!-- Recipe cards will be rendered here by JavaScript -->
         </div>

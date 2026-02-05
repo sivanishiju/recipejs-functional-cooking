@@ -1,4 +1,4 @@
-const recipes = [
+let favorites = [];
     {
         id: 1,
         title: "Classic Spaghetti Carbonara",
@@ -33,9 +33,8 @@ const createRecipeCard = (recipe) => {
 
             <p>${recipe.description}</p>
 
-            <button onclick="toggleDetails(${recipe.id})">
-                View Recipe
-            </button>
+            <button onclick="toggleFavorite(${recipe.id})">❤️ Favorite</button>
+
 
             <div class="recipe-details" id="details-${recipe.id}" style="display:none;">
                 <h4>Ingredients</h4>
@@ -128,3 +127,32 @@ const toggleDetails = (id) => {
             details.style.display === "none" ? "block" : "none";
     })();
 };
+const toggleFavorite = (id) => {
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(favId => favId !== id);
+    } else {
+        favorites.push(id);
+    }
+
+    const favRecipes = recipes.filter(r => favorites.includes(r.id));
+    renderRecipes(favRecipes);
+};
+const filterDifficulty = (level) => {
+    const filtered = recipes.filter(recipe => recipe.difficulty === level);
+    renderRecipes(filtered);
+};
+
+const showAll = () => {
+    renderRecipes(recipes);
+};
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+
+    const searchedRecipes = recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(query)
+    );
+
+    renderRecipes(searchedRecipes);
+});
