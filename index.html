@@ -8,51 +8,37 @@
 </head>
 <body>
 
-    <header>
-        <h1>🍳 RecipeJS</h1>
-        <p>Your Functional Cooking Companion</p>
-    </header>
-    <section class="controls">
-    <button onclick="showAll()">Show All</button>
-    <button onclick="filterEasy()">Easy</button>
-    <button onclick="filterMedium()">Medium</button>
-    <button onclick="filterHard()">Hard</button>
-    <button onclick="quickRecipes()">Under 30 min</button>
-    <button onclick="toggleFavorite(${recipe.id})">
-    ❤️ Favorite
-</button>
+<header>
+    <h1>RecipeJS</h1>
+    <p>Your Functional Cooking Companion</p>
+</header>
 
-</section>
+<main>
+    <!-- Filter & Sort Controls -->
+    <div class="controls">
 
-    <main>
-        <section class="controls">
-    <input type="text" id="searchInput" placeholder="Search recipes..." />
-<input
-    type="text"
-    id="searchInput"
-    placeholder="Search recipes..."
-    class="search-bar"
-/>
-
-    <button onclick="showAll()">Show All</button>
-    <button onclick="filterDifficulty('easy')">Easy</button>
-    <button onclick="filterDifficulty('medium')">Medium</button>
-    <button onclick="filterDifficulty('hard')">Hard</button>
-</section>
-<section class="controls">
-    <button onclick="showAll()">Show All</button>
-    <button onclick="filterByDifficulty('easy')">Easy</button>
-    <button onclick="filterByDifficulty('medium')">Medium</button>
-    <button onclick="filterByDifficulty('hard')">Hard</button>
-    <button onclick="sortByTime()">Sort by Time</button>
-    <button onclick="sortByName()">Sort A–Z</button>
-</section>
-
-        <div id="recipe-container">
-            <!-- Recipe cards will be rendered here by JavaScript -->
+        <!-- Filter Buttons -->
+        <div class="filters">
+            <button data-filter="all" class="active">All</button>
+            <button data-filter="easy">Easy</button>
+            <button data-filter="medium">Medium</button>
+            <button data-filter="hard">Hard</button>
+            <button data-filter="quick">Quick (&lt;30min)</button>
         </div>
-    </main>
 
-    <script src="app.js"></script>
+        <!-- Sort Buttons -->
+        <div class="sorts">
+            <button data-sort="none" class="active">Default</button>
+            <button data-sort="name">Sort by Name</button>
+            <button data-sort="time">Sort by Time</button>
+        </div>
+
+    </div>
+
+    <!-- Recipes will be rendered here -->
+    <div id="recipe-container"></div>
+</main>
+
+<script src="app.js"></script>
 </body>
 </html>
