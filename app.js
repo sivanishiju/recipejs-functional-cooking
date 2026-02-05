@@ -23,14 +23,45 @@ const createRecipeCard = (recipe) => {
     return `
         <div class="recipe-card">
             <h3>${recipe.title}</h3>
-            <p>⏱️ ${recipe.time} min</p>
-            <span class="difficulty ${recipe.difficulty}">
-                ${recipe.difficulty}
-            </span>
+
+            <div class="recipe-meta">
+                <span>⏱️ ${recipe.time} min</span>
+                <span class="difficulty ${recipe.difficulty}">
+                    ${recipe.difficulty}
+                </span>
+            </div>
+
             <p>${recipe.description}</p>
+
+            <button onclick="toggleDetails(${recipe.id})">
+                View Recipe
+            </button>
+
+            <div class="recipe-details" id="details-${recipe.id}" style="display:none;">
+                <h4>Ingredients</h4>
+                ${renderList(recipe.ingredients)}
+
+                <h4>Steps</h4>
+                ${renderList(recipe.steps)}
+            </div>
         </div>
     `;
 };
+const renderList = (items, index = 0) => {
+    if (index === 0) {
+        return `<ul>${renderList(items, index + 1)}</ul>`;
+    }
+
+    if (index > items.length) {
+        return "";
+    }
+
+    return `
+        <li>${items[index - 1]}</li>
+        ${renderList(items, index + 1)}
+    `;
+};
+
 
 const renderRecipes = (recipesToRender) => {
     recipeContainer.innerHTML = recipesToRender
@@ -69,4 +100,31 @@ const quickRecipes = () => {
         recipe => recipe.time < 30
     );
     renderRecipes(quick);
+};
+{
+    id: 1,
+    title: "Classic Spaghetti Carbonara",
+    time: 25,
+    difficulty: "easy",
+    description: "A creamy Italian pasta dish made with eggs and cheese.",
+    category: "pasta",
+    ingredients: [
+        "Spaghetti",
+        "Eggs",
+        "Cheese",
+        "Black pepper"
+    ],
+    steps: [
+        "Boil pasta",
+        "Mix eggs and cheese",
+        "Combine pasta with sauce",
+        "Serve hot"
+    ]
+}
+const toggleDetails = (id) => {
+    (function () {
+        const details = document.getElementById(`details-${id}`);
+        details.style.display =
+            details.style.display === "none" ? "block" : "none";
+    })();
 };
