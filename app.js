@@ -39,3 +39,34 @@ const renderRecipes = (recipesToRender) => {
 };
 
 renderRecipes(recipes);
+const showAll = () => {
+    renderRecipes(recipes);
+};
+
+const filterEasy = () => {
+    const easyRecipes = recipes.filter(
+        recipe => recipe.difficulty === "easy"
+    );
+    renderRecipes(easyRecipes);
+};
+
+const filterMedium = () => {
+    const mediumRecipes = recipes.filter(
+        recipe => recipe.difficulty === "medium"
+    );
+    renderRecipes(mediumRecipes);
+};
+
+const filterHard = () => {
+    const hardRecipes = recipes.filter(
+        recipe => recipe.difficulty === "hard"
+    );
+    renderRecipes(hardRecipes);
+};
+
+const quickRecipes = () => {
+    const quick = recipes.filter(
+        recipe => recipe.time < 30
+    );
+    renderRecipes(quick);
+};
