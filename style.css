@@ -1,49 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ------------------- Controls / Buttons ------------------- */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-header {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    text-align: center;
-    padding: 2rem;
-}
-
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-}
-
-#recipe-container {
+.controls {
     display: flex;
-    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.recipe-card {
-    background: white;
-    width: 300px;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+.controls .filters,
+.controls .sorts {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
-.recipe-card:hover {
-    transform: translateY(-5px);
+.controls button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #667eea;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.difficulty.easy {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 0.3rem 0.7rem;
-    border-radius: 20px;
+.controls button:hover {
+    background-color: #556cd6;
+    transform: translateY(-2px);
+}
+
+.controls button.active {
+    background-color: #764ba2;
 }
