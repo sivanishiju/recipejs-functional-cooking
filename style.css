@@ -135,3 +135,11 @@ main {
     margin-top: 0.75rem;
     color: #333;
 }
+.search-bar {
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 250px;
+    margin: 0 auto 1rem;
+    display: block;
+}

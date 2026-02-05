@@ -1,4 +1,5 @@
-let favorites = [];
+let favoriteRecipes = [];
+
     {
         id: 1,
         title: "Classic Spaghetti Carbonara",
@@ -206,3 +207,28 @@ steps: [
     "Mix everything",
     "Serve hot"
 ]
+const toggleFavorite = (id) => {
+    if (favoriteRecipes.includes(id)) {
+        favoriteRecipes = favoriteRecipes.filter(fav => fav !== id);
+    } else {
+        favoriteRecipes.push(id);
+    }
+
+    const favList = recipes.filter(recipe =>
+        favoriteRecipes.includes(recipe.id)
+    );
+
+    renderRecipes(favList);
+};
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+
+    const result = recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(query)
+    );
+
+    renderRecipes(result);
+});
+

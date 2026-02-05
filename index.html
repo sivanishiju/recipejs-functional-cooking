@@ -18,11 +18,21 @@
     <button onclick="filterMedium()">Medium</button>
     <button onclick="filterHard()">Hard</button>
     <button onclick="quickRecipes()">Under 30 min</button>
+    <button onclick="toggleFavorite(${recipe.id})">
+    ❤️ Favorite
+</button>
+
 </section>
 
     <main>
         <section class="controls">
     <input type="text" id="searchInput" placeholder="Search recipes..." />
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Search recipes..."
+    class="search-bar"
+/>
 
     <button onclick="showAll()">Show All</button>
     <button onclick="filterDifficulty('easy')">Easy</button>
